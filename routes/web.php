@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,39 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//test page
+Route::get('/test', function () {
+    return view('test',[
+        'one'=>1 ,// access in view as normal variable $one
+        //'project'=> Project::all() //user's projects
+        'arr'=>[
+            'one'=>1,
+            'two'=>2,
+            'three'=>3,
+            'four'=>4,
+        ]
+    ]);
+});
+
+//login or register
+
+//main page --> showing all projects
+Route::get('/projects',[ProjectController::class,'index']);
+
+//create new project
+Route::get('/projects/create',[ProjectController::class,'create']);
+
+//store new project POST REQUEST SENT BACK TO projects PAGE
+Route::post('/projects',[ProjectController::class,'store']);
+
+//project page --> showing all tasks
+
+
+
+//create new task
+
+
+
+//task page --> showing single task KEEP AT THE END
+
