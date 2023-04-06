@@ -38,13 +38,28 @@ Route::get('/test', function () {
 //main page --> showing all projects
 Route::get('/projects',[ProjectController::class,'index']);
 
+
 //create new project
 Route::get('/projects/create',[ProjectController::class,'create']);
 
 //store new project POST REQUEST SENT BACK TO projects PAGE
 Route::post('/projects',[ProjectController::class,'store']);
 
-//project page --> showing all tasks
+
+//show project edit forum
+Route::get('projects/{$project}/edit', [ProjectController::class,'edit']);
+
+//update project request
+Route::put('project/{$project}',[ProjectController::class,'update']);
+
+//delete projcet request
+Route::delete('project{$project}',[ProjectController::class,'delete']);
+
+
+
+//project page --> showing all tasks of a specific single project
+Route::get('projects/{$project}',[ProjectController::class,'show']);
+
 
 
 
