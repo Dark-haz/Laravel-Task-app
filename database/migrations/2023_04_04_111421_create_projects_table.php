@@ -12,11 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('pname')->unique();
+            $table->id();
+            $table->string('pname')->unique()->onDelete('cascade');
             $table->text('description')->nullable();
-            //to add later
-            //$table->foreign('userid')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('listing');
+        Schema::dropIfExists('projects');
     }
 };

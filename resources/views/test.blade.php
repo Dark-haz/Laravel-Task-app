@@ -16,3 +16,13 @@ $sentence = Hash::make($faker->unique->password);
     {{$key}} : {{$val}}
     <br>
 @endforeach
+
+<br>
+
+@foreach ($projects as $project)
+
+   <a href="projects/{$project}"> {{$project['pname']}}</a> <br>
+@endforeach
+
+
+

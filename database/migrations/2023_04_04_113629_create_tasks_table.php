@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('tname');
             $table->text('description')->nullable();
             $table->integer('completed'); // 1 completed 0 not completed
-            
+            $table->foreignId('project_id')->constrained()->onDelete('cascade');
         });
     }
 

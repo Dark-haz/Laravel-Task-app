@@ -22,8 +22,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Project::factory(3)->create();
-        Task::factory(6)->create();
-        User::factory(5)->create();
+
+        //change values to change numbers of data
+        // + change each factory accordingly 
+        //[only project and task factories]
+        User::factory(2)->create(); //2 users
+        Project::factory(6)->create(); // 6 projects
+        Task::factory(10)->create(); // 10 tasks
     }
 }

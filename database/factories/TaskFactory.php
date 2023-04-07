@@ -20,7 +20,8 @@ class TaskFactory extends Factory
             'tname' => fake()->unique()->sentence(),
             'description' => fake()->paragraph(),
             'completed' => fake()->randomElement([0,1]),
-            
+            // CHANGE HERE
+            'project_id' => fake()->numberBetween(1,6) // rand between 6 projects
         ];
     }
 }
