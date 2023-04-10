@@ -29,5 +29,11 @@ class DatabaseSeeder extends Seeder
         User::factory(2)->create(); //2 users
         Project::factory(6)->create(); // 6 projects
         Task::factory(10)->create(); // 10 tasks
+        // hardcoded entry user
+        User::create([
+        'name' => 'Dio',
+        'email' => 'dio@gmail.com',
+        'password' => bcrypt('zawarudo')
+        ]);
     }
 }

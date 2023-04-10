@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/register';
+    public const HOME = '/projects'; //redirect if logged in user tries to go to register
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

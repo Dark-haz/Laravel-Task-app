@@ -15,6 +15,7 @@ class UserController extends Controller
 
     // Create New User
     public function store(Request $request) {
+        //dd($request);
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
@@ -24,10 +25,10 @@ class UserController extends Controller
 
         // Hash Password
         $formFields['password'] = bcrypt($formFields['password']);
-
+        //dd($formFields);
         // Create User
         $user = User::create($formFields);
-
+        //dd($user);// to test
         // Login
         auth()->login($user);
 
@@ -66,4 +67,6 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
         //show undel email input field in html
     }
+
+   
 }

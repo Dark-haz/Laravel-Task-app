@@ -31,6 +31,7 @@ class TaskController extends Controller
 
      //show edit task forum
      public function edit(Project $project ,Task $task){
+        //dd($task); //returns one instance of $task
         return view('task.edit',['task'=>$task]);
     }
 

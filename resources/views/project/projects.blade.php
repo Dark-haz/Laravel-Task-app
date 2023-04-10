@@ -1,3 +1,5 @@
 {{-- show all projects of user --}}
 
-projects list
+projects list of user  username 
+{{-- @php  @auth->user()->name; @endphp --}}
+
