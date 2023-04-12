@@ -158,8 +158,7 @@
         $d = $project->description;
         $pid = $project->id;
         @endphp
-
-        <x-pcard  width='17' title='{{$p}}' description='{{$d}}'/>
+        <x-pcard  width='17' title='{{$p}}' description='{{$d}}' project_id='{{$pid}}' />
         @endforeach
 
     @endif

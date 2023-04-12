@@ -69,7 +69,7 @@ class ProjectController extends Controller
         }
         
         $project->delete();
-        return redirect('project.projects');
+        return redirect('/projects');
     }
 
 

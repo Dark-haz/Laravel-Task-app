@@ -72,10 +72,10 @@ Route::post('/projects',[ProjectController::class,'store'])->middleware('auth');
 Route::get('projects/{project}/edit', [ProjectController::class,'edit'])->middleware('auth');
 
 //update project request
-Route::put('project/{project}',[ProjectController::class,'update'])->middleware('auth');
+Route::put('projects/{project}',[ProjectController::class,'update'])->middleware('auth');
 
 //delete project request
-Route::delete('project/{project}',[ProjectController::class,'delete'])->middleware('auth');
+Route::delete('projects/{project}',[ProjectController::class,'delete'])->middleware('auth');
 
 //project page --> showing all tasks of a specific single project
 Route::get('projects/{project}',[ProjectController::class,'show'])->name('taskshow')->middleware('auth');

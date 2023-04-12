@@ -1,4 +1,4 @@
-@props(['width','title','description'])
+@props(['width','title','description','project_id'])
 
 {{-- array of variables passed into the component --}}
 {{-- can be self closing or wrapping something else using {{$slot}} --}}
@@ -21,7 +21,12 @@
 
     {{-- options --}}
 		<div class="project-options">
-			<button class="delete project-button" id="DELETE">Delete</button>
+			<form method="POST" action="{{url('projects/'.$project_id)}}">
+        @csrf
+        @method('DELETE')  
+        
+        <button class="delete project-button" id="DELETE">Delete</button>
+      </form>
 			<button class="edit project-button" id="EDIT">Edit</button>
 		</div>
 
