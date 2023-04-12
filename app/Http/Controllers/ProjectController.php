@@ -57,7 +57,7 @@ class ProjectController extends Controller
         ]); 
 
         $project->update($fields_to_store);
-        return back();
+        return redirect('/projects');
     }
 
     //delete project request

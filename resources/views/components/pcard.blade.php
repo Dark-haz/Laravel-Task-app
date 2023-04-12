@@ -24,10 +24,11 @@
 			<form method="POST" action="{{url('projects/'.$project_id)}}">
         @csrf
         @method('DELETE')  
-        
+
         <button class="delete project-button" id="DELETE">Delete</button>
       </form>
-			<button class="edit project-button" id="EDIT">Edit</button>
+
+        <button class="edit project-button" id="EDIT"><a href="{{url('projects/'.$project_id.'/edit')}}">Edit</a></button>
 		</div>
 
 	</div>

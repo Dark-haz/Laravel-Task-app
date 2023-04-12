@@ -13,6 +13,10 @@
 {{-- ------------------------------------------------------------------ --}}
 
 <!DOCTYPE html>
+@php
+    use App\Models\Task;
+    use Illuminate\Support\Facades\DB;
+@endphp
 <html>
 <head>
 	<title>Projects</title>
@@ -157,8 +161,16 @@
         $p = $project->pname;
         $d = $project->description;
         $pid = $project->id;
+        $tasks = Task::where('project_id', $pid)->where('completed', 1)->get();// completed tasks objects
+        $comp = count($tasks); // count completed tasks
+        $taskCount = Task::where('project_id', $pid)->count();// all tasks count
+
+        if($taskCount != 0){
+        $percent = ($comp/$taskCount) * 100;
+      }else{$percent = 0;} //bar is set to ZERO when no tasks exist yet
         @endphp
-        <x-pcard  width='17' title='{{$p}}' description='{{$d}}' project_id='{{$pid}}' />
+
+        <x-pcard  width='{{$percent}}' title='{{$p}}' description='{{$d}}' project_id='{{$pid}}'/>
         @endforeach
 
     @endif
