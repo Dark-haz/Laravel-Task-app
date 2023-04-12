@@ -17,9 +17,7 @@ use App\Http\Controllers\ProjectController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 //test page
 Route::get('/test', function () {
@@ -42,16 +40,16 @@ Route::get('/test', function () {
 // USER ROUTES --------------------------------------------------------
 
 // register forum
-Route::get('/register', [UserController::class, 'create']);//->middleware('guest');
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // create new user
 Route::post('/users', [UserController::class, 'store']);
 
 // Log User Out
-Route::post('/logout', [UserController::class, 'logout']);//->middleware('auth');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Show Login Form
-Route::get('/login', [UserController::class, 'login'])->name('login');//->middleware('guest');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 // Log In User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
@@ -60,49 +58,49 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 // PROJECT ROUTES --------------------------------------------------------
 
 //showing all projects
-Route::get('/projects',[ProjectController::class,'index']);//->middleware('auth');
+Route::get('/projects',[ProjectController::class,'index'])->middleware('auth');
 
 
 //create new project
-Route::get('/projects/create',[ProjectController::class,'create']);//->middleware('auth');
+Route::get('/projects/create',[ProjectController::class,'create'])->middleware('auth');
 
 //store new project POST REQUEST SENT BACK TO projects PAGE
-Route::post('/projects',[ProjectController::class,'store']);//->middleware('auth');
+Route::post('/projects',[ProjectController::class,'store'])->middleware('auth');
 
 
 //show project edit forum
-Route::get('projects/{project}/edit', [ProjectController::class,'edit']);//->middleware('auth');
+Route::get('projects/{project}/edit', [ProjectController::class,'edit'])->middleware('auth');
 
 //update project request
-Route::put('project/{project}',[ProjectController::class,'update']);//->middleware('auth');
+Route::put('project/{project}',[ProjectController::class,'update'])->middleware('auth');
 
 //delete project request
-Route::delete('project/{project}',[ProjectController::class,'delete']);//->middleware('auth');
+Route::delete('project/{project}',[ProjectController::class,'delete'])->middleware('auth');
 
 //project page --> showing all tasks of a specific single project
-Route::get('projects/{project}',[ProjectController::class,'show'])->name('taskshow');//->middleware('auth');
+Route::get('projects/{project}',[ProjectController::class,'show'])->name('taskshow')->middleware('auth');
 
 //--------------------------------------------------------
 
 // TASKS ROUTE --------------------------------------------------------
 
 //create new task
-Route::get('/projects/{project}/create',[TaskController::class,'create']);//->middleware('auth');
+Route::get('/projects/{project}/create',[TaskController::class,'create'])->middleware('auth');
 
 //store new task 
-Route::post('/projects/{project}',[TaskController::class,'store']);//->middleware('auth');
+Route::post('/projects/{project}',[TaskController::class,'store'])->middleware('auth');
 
 
 //show project edit forum
-Route::get('projects/{project}/{task}/edit', [TaskController::class,'edit']);//->middleware('auth');
+Route::get('projects/{project}/{task}/edit', [TaskController::class,'edit'])->middleware('auth');
 
 //update project request
-Route::put('project/{project}/{task}',[TaskController::class,'update']);//->middleware('auth');
+Route::put('project/{project}/{task}',[TaskController::class,'update'])->middleware('auth');
 
 //delete project request
-Route::delete('project/{project}/{task}',[TaskController::class,'delete']);//->middleware('auth');
+Route::delete('project/{project}/{task}',[TaskController::class,'delete'])->middleware('auth');
 
 
 
 //task page --> showing single task KEEP AT THE END
-
+Route::get('projects/{project}/{task}', [TaskController::class,'show'])->middleware('auth');

@@ -5,8 +5,8 @@ list of tasks for  {{$project['pname']}}  : <br> <br>
     $num = 0
 @endphp
 
-@foreach ($tasks as $task)
+{{-- @foreach ($tasks as $task)
  task {{++$num}}  {{$task['tname']}}
  <br> {{$task['description']}}
 <br> <br> <br>
-@endforeach
+@endforeach --}}

@@ -65,5 +65,26 @@ class TaskController extends Controller
         return redirect()->route('taskshow',['project'=>$project]);
         //task deleted should not appear
     }
+
+    //show single task
+    public function show(Project $project ,Task $task){
+        
+        // if($project->user_id != auth()->id()) {
+        //     abort(403, 'What are you trying to do big man hm?');
+        // }
+        
+        return view('project.tasks',[
+            'project' => $project,
+            'task' => $task 
+        ]);
+       
+        // retry with just passing taskid as parameter instead of the model variable 
+        // and manually handle the exception with
+        // try {
+        //     $task = $project->tasks()->findOrFail($taskid);
+        // } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        //     abort(404, 'Task not found');
+        // }
+    }
 }
    

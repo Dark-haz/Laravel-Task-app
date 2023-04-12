@@ -10,7 +10,7 @@ class Project extends Model
     public $timestamps = false;
     
     protected $fillable=[
-        'pname', 'description'
+        'pname', 'description' , 'user_id'
     ];
     use HasFactory;
 

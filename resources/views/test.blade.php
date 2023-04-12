@@ -1,5 +1,5 @@
 hello world
-{{-- {{$one}} --}}
+{{$one}}
 <br>
 
 @php
@@ -29,6 +29,8 @@ bcrypt {{$s}}
     $num = 0
 @endphp
 
-@foreach ($tasks as $task)
+{{-- @foreach ($tasks as $task)
     {{$project['pname']}}  : task {{++$num}}  {{$task['tname']}} <br>
-@endforeach
+@endforeach --}}
+
+<x-pcard/>

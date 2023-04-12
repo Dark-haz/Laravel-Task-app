@@ -13,8 +13,9 @@ class ProjectController extends Controller
 
     //show all project , returns index 
     public function index(){
+        $projects = Project::where('user_id', auth()->user()->id)->get();
         return view('project.projects',[
-            'projects' => Project::all()
+            'projects' => $projects
         ]);
     }
 
@@ -33,7 +34,7 @@ class ProjectController extends Controller
         $fields_to_store['user_id'] = auth()->id();
 
         Project::create($fields_to_store);
-        return redirect('project.projects');
+        return redirect('/projects');
     }
 
     //show edit project forum
@@ -47,7 +48,7 @@ class ProjectController extends Controller
 
          //USER AUTHORIZATION
          if($project->user_id != auth()->id()) {
-            abort(403, 'Unauthorized Action');
+            abort(403, 'boi what you doin here , go back!');
         }
 
         $fields_to_store = $request->validate([
@@ -64,7 +65,7 @@ class ProjectController extends Controller
 
          //USER AUTHORIZATION
          if($project->user_id != auth()->id()) {
-            abort(403, 'Unauthorized Action');
+            abort(403, 'Caught you red handed!');
         }
         
         $project->delete();
@@ -72,10 +73,15 @@ class ProjectController extends Controller
     }
 
 
-    //open a single project  , returns show
+    //open a single project  and shows its tasks
     public function show(Project $project){
-        $tasks = Project::find($project->id)->tasks; //still need to define relashionship
+        
+        // if($project->user_id != auth()->id()) {
+        //     abort(403, 'What are you trying to do big man hm?');
+        // }
 
+        $tasks = Project::find($project->id)->tasks; 
+        
         return view('project.tasks',[
             'project' => $project,
             'tasks' => $tasks 
